@@ -1,10 +1,13 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CodingEventsDemo.Models
 {
+   // [Keyless]
     public class Event
     {
+        
         public string Name { get; set; }
 
         public string Description { get; set; }
@@ -12,17 +15,14 @@ namespace CodingEventsDemo.Models
         public string ContactEmail { get; set; }
 
         public EventType Type { get; set; }
-
-        public int Id { get; }
-        static private int nextId = 1;
+        //[Key]
+        public int Id { get; set; }
 
         public Event()
         {
-            Id = nextId;
-            nextId++;
         }
 
-        public Event(string name, string description, string contactEmail) : this()
+        public Event(string name, string description, string contactEmail)
         {
             Name = name;
             Description = description;
